@@ -6,12 +6,23 @@ class Database {
     private $password;
     private $conn;
 
-    public function __construct() {
-        $this->host = getenv('DB_HOST') ?: 'localhost';
-        $this->db_name = getenv('DB_NAME') ?: 'fingrit';
-        $this->username = getenv('DB_USER') ?: 'root';
-        $this->password = getenv('DB_PASS') ?: 'Cherubin09@';
+public function __construct() {
+    // Load .env once
+    if (!getenv('DB_HOST')) {
+        require_once __DIR__ . '/../env-loader.php';
+        loadEnv(__DIR__ . '/../.env');
     }
+
+    $this->host = getenv('DB_HOST');
+    $this->db_name = getenv('DB_NAME');
+    $this->username = getenv('DB_USER');
+    $this->password = getenv('DB_PASS');
+
+    if (!$this->db_name) {
+        throw new Exception("No database selected: DB_NAME not set in .env");
+    }
+}
+
 
     public function connect() {
         $this->conn = null;

@@ -1,8 +1,15 @@
-<?php require_once 'php/auth.php'; ?>
+<?php 
+
+require_once __DIR__ . '/env-loader.php';
+loadEnv(__DIR__ . '/.env');
+
+require_once 'php/auth.php'; 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 
   <head>
     <meta charset="utf-8">
@@ -25,7 +32,7 @@
     <!-- Header -->
     <header class="fg-navbar navbar navbar-expand-lg" aria-label="fingrit navbar">
       <div class="container d-flex align-items-center justify-content-between">
-        <a class="navbar-brand w-auto" href="index.html">
+        <a class="navbar-brand w-auto" href="index.php">
           <div class="logo">Fin<span>Grit</span></div>
         </a>
 

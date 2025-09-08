@@ -1,6 +1,6 @@
 -- Create database
-CREATE DATABASE IF NOT EXISTS fingrit;
-USE fingrit;
+CREATE DATABASE IF NOT EXISTS if0_39886115_fingrit;
+USE if0_39886115_fingrit;
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
