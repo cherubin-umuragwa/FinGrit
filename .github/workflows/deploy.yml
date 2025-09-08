@@ -1,0 +1,37 @@
+name: Deploy to InfinityFree (FTP)
+
+on:
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - ".github/**"
+      - "**/*.md"
+  workflow_dispatch: {}
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ftp-deploy-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          protocol: ftps
+          state-name: "deploy-state.json"
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/*.md
+            .env
+            **/.env
+            **/.DS_Store
