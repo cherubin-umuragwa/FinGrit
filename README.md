@@ -88,7 +88,7 @@ The project uses a small custom `.env` loader (`env-loader.php`) instead of `vlu
 
 ## 📸 Screenshots
 
-_Add screenshots or GIFs of your project here._  
+_To be added._  
 
 ---
 
