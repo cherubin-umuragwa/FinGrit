@@ -78,7 +78,7 @@ $categories = getCategories();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FinGrit - Analytics</title>
+    <title>FinGrit - Transactions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -92,10 +92,10 @@ $categories = getCategories();
     <div class="dashboard-container">
         <?php include 'partials/sidebar.php'; ?>
 
-        <main class="dashboard-main">
+        <main class="dashboard-main" id="dashboardMain">
             <header class="dashboard-header">
-                <h1><?php echo $action === 'add' ? 'Add Transaction' : ($action === 'edit' ? 'Edit Transaction' : 'Transactions'); ?></h1>
-                <div class="header-actions">
+                <h1 class="header1"><?php echo $action === 'add' ? 'Add Transaction' : ($action === 'edit' ? 'Edit Transaction' : 'Transactions'); ?></h1>
+                <div class="header-actions header-actions1">
                     <?php if ($action !== 'add' && $action !== 'edit'): ?>
                         <a href="transactions.php?action=add" class="btn btn-primary">
                             <i class="bi bi-plus"></i>
@@ -107,6 +107,29 @@ $categories = getCategories();
                             Back to Transactions
                         </a>
                     <?php endif; ?>
+                </div>
+                <div class="topbar">
+                    <div class="top1">
+                        <div class="hamburger-menu" id="hamburgerMenu">
+                            <i class="bi bi-list"></i>
+                        </div>
+                        <h1><?php echo $action === 'add' ? 'Add Transaction' : ($action === 'edit' ? 'Edit Transaction' : 'Transactions'); ?></h1>
+                        <!-- Overlay for mobile -->
+                        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+                    </div>
+                    <div class="header-actions">
+                        <?php if ($action !== 'add' && $action !== 'edit'): ?>
+                            <a href="transactions.php?action=add" class="btn btn-primary">
+                                <i class="bi bi-plus"></i>
+                                Add Transaction
+                            </a>
+                        <?php else: ?>
+                            <a href="transactions.php" class="btn btn-secondary" id="back-transactions">
+                                <i class="bi bi-arrow-left"></i>
+                                Back to Transactions
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </header>
 
@@ -221,10 +244,14 @@ $categories = getCategories();
                         </div>
                     <?php else: ?>
                         <div class="empty-state">
-                            <img src="assets/images/no-transactions.svg" alt="No transactions" width="200">
-                            <h3>No transactions yet</h3>
-                            <p>Start tracking your finances by adding your first transaction</p>
-                            <a href="transactions.php?action=add" class="btn btn-primary form-btn">Add Transaction</a>
+                            <div class="empty1">
+                                <img src="assets/images/no-transactions.png" alt="No transactions" width="200">
+                                <h3>No transactions yet</h3>
+                                <p>Start tracking your finances
+                                    <br>by adding your first transaction
+                                </p>
+                                <a href="transactions.php?action=add" class="btn btn-primary form-btn">Add Transaction</a>
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -266,6 +293,8 @@ $categories = getCategories();
     </script>
 
     <script src="js/main.js"></script>
+    <script src="js/hamburger.js"></script>
+
 </body>
 
 </html>

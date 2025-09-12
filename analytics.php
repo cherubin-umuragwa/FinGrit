@@ -151,17 +151,16 @@ $expensesChange = $previousMonthExpenses > 0 ? (($currentMonthExpenses - $previo
 <body>
     <div class="dashboard-container">
         <?php include 'partials/sidebar.php'; ?>
-
-        <main class="dashboard-main">
+        <main class="dashboard-main" id="dashboardMain">
             <header class="dashboard-header">
-                <h1>Financial Analytics</h1>
-                <div class="date-filter">
+                <h1 class="header1">Financial Analytics</h1>
+                <div class="date-filter header-actions1">
                     <?php if ($startDate && $endDate): ?>
                         <!-- Show selected period if dates are chosen -->
                         <span class="selected-period">
                             Period: <?php echo date('M j, Y', strtotime($startDate)) . " - " . date('M j, Y', strtotime($endDate)); ?>
                         </span>
-                        <button id="changeDatesBtn" class="btn btn-primary btn-sm">Change Dates</button>
+                        <button id="changeDatesBtn" class="btn btn-primary btn-sm">Change</button>
                     <?php else: ?>
                         <!-- Show form if no dates selected -->
                         <form method="get" class="filter-form" id="dateFilterForm">
@@ -170,6 +169,32 @@ $expensesChange = $previousMonthExpenses > 0 ? (($currentMonthExpenses - $previo
                             <button type="submit" class="btn btn-primary btn-sm">Apply</button>
                         </form>
                     <?php endif; ?>
+                </div>
+                <div class="topbar">
+                    <div class="top1">
+                    <div class="hamburger-menu" id="hamburgerMenu">
+                        <i class="bi bi-list"></i>
+                    </div>
+                <h1>Financial Analytics</h1>
+                <!-- Overlay for mobile -->
+                    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+                    </div>
+                <div class="date-filter">
+                    <?php if ($startDate && $endDate): ?>
+                        <!-- Show selected period if dates are chosen -->
+                        <span class="selected-period">
+                            Period: <?php echo date('M j, Y', strtotime($startDate)) . " - " . date('M j, Y', strtotime($endDate)); ?>
+                        </span>
+                        <button id="changeDatesBtn" class="btn btn-primary btn-sm">Change</button>
+                    <?php else: ?>
+                        <!-- Show form if no dates selected -->
+                        <form method="get" class="filter-form" id="dateFilterForm">
+                            <input type="date" name="start_date" required>
+                            <input type="date" name="end_date" required>
+                            <button type="submit" class="btn btn-primary btn-sm">Apply</button>
+                        </form>
+                    <?php endif; ?>
+                </div>
                 </div>
             </header>
 
@@ -238,8 +263,12 @@ $expensesChange = $previousMonthExpenses > 0 ? (($currentMonthExpenses - $previo
                     <div class="chart-header">
                         <h3 class="chart-title">Income vs Expenses</h3>
                         <div class="chart-actions">
-                            <button><i class="bi bi-download"></i></button>
-                            <button><i class="bi bi-arrows-fullscreen"></i></button>
+                            <button class="download-chart" data-chart-id="incomeExpenseChart">
+                                <i class="bi bi-download"></i>
+                            </button>
+                            <button class="expand-chart">
+                                <i class="bi bi-arrows-fullscreen"></i>
+                            </button>
                         </div>
                     </div>
                     <div id="incomeExpenseChart"></div>
@@ -249,8 +278,12 @@ $expensesChange = $previousMonthExpenses > 0 ? (($currentMonthExpenses - $previo
                     <div class="chart-header">
                         <h3 class="chart-title">Spending by Category</h3>
                         <div class="chart-actions">
-                            <button><i class="bi bi-download"></i></button>
-                            <button><i class="bi bi-arrows-fullscreen"></i></button>
+                            <button class="download-chart" data-chart-id="categoryChart">
+                                <i class="bi bi-download"></i>
+                            </button>
+                            <button class="expand-chart">
+                                <i class="bi bi-arrows-fullscreen"></i>
+                            </button>
                         </div>
                     </div>
                     <div id="categoryChart"></div>
@@ -306,7 +339,7 @@ $expensesChange = $previousMonthExpenses > 0 ? (($currentMonthExpenses - $previo
                 labels: [<?php
                             $expenseCategories = array_slice($categoryData['expense'], 0, 5);
                             echo implode(',', array_map(function ($category) {
-                                return "'" . $category . "'";
+                                return "'" . addslashes($category) . "'";
                             }, array_keys($expenseCategories)));
                             ?>],
                 data: [<?php echo implode(',', array_values($expenseCategories)); ?>]
@@ -325,8 +358,9 @@ $expensesChange = $previousMonthExpenses > 0 ? (($currentMonthExpenses - $previo
         });
     </script>
 
-    <script src="js/analytics.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>

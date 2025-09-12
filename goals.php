@@ -101,11 +101,10 @@ $goals = $goal->getAll($user['id']);
 <body>
     <div class="dashboard-container">
         <?php include 'partials/sidebar.php'; ?>
-
-        <main class="dashboard-main">
+        <main class="dashboard-main" id="dashboardMain">
             <header class="dashboard-header">
-                <h1><?php echo $action === 'add' ? 'Add Goal' : ($action === 'edit' ? 'Edit Goal' : 'Savings Goals'); ?></h1>
-                <div class="header-actions">
+                <h1 class="header1"><?php echo $action === 'add' ? 'Add Goal' : ($action === 'edit' ? 'Edit Goal' : 'Savings Goals'); ?></h1>
+                <div class="header-actions header-actions1">
                     <?php if ($action !== 'add' && $action !== 'edit'): ?>
                         <a href="goals.php?action=add" class="btn btn-primary form-btn">
                             <i class="bi bi-plus"></i>
@@ -117,6 +116,29 @@ $goals = $goal->getAll($user['id']);
                             Back to Goals
                         </a>
                     <?php endif; ?>
+                </div>
+                <div class="topbar">
+                    <div class="top1">
+                        <div class="hamburger-menu" id="hamburgerMenu">
+                            <i class="bi bi-list"></i>
+                        </div>
+                        <h1><?php echo $action === 'add' ? 'Add Goal' : ($action === 'edit' ? 'Edit Goal' : 'Savings Goals'); ?></h1>
+                        <!-- Overlay for mobile -->
+                        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+                    </div>
+                    <div class="header-actions">
+                        <?php if ($action !== 'add' && $action !== 'edit'): ?>
+                            <a href="goals.php?action=add" class="btn btn-primary form-btn">
+                                <i class="bi bi-plus"></i>
+                                Add Goal
+                            </a>
+                        <?php else: ?>
+                            <a href="goals.php" class="btn btn-secondary" id="back-goals">
+                                <i class="bi bi-arrow-left"></i>
+                                Back to Goals
+                            </a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </header>
 
@@ -229,10 +251,14 @@ $goals = $goal->getAll($user['id']);
                         </div>
                     <?php else: ?>
                         <div class="empty-state">
-                            <img src="assets/images/no-goals.svg" alt="No goals" width="200">
-                            <h3>No savings goals yet</h3>
-                            <p>Start achieving your financial dreams by setting your first savings goal</p>
-                            <a href="goals.php?action=add" class="btn btn-primary form-btn">Add Goal</a>
+                            <div class="empty1">
+                                <img src="assets/images/no-goals.png" alt="No goals" width="200">
+                                <h3>No savings goals yet</h3>
+                                <p>Start achieving your financial dreams
+                                    <br>by setting your first savings goal
+                                </p>
+                                <a href="goals.php?action=add" class="btn btn-primary form-btn">Add Goal</a>
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -241,6 +267,7 @@ $goals = $goal->getAll($user['id']);
     </div>
 
     <script src="js/main.js"></script>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>

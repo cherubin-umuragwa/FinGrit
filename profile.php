@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FinGrit - Analytics</title>
+    <title>FinGrit - Profile</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -91,10 +91,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="dashboard-container">
         <?php include 'partials/sidebar.php'; ?>
-
-        <main class="dashboard-main">
+        <main class="dashboard-main" id="dashboardMain">
             <header class="dashboard-header">
-                <h1>Profile Settings</h1>
+                <div class="topbar">
+                    <div class="top1">
+                    <div class="hamburger-menu" id="hamburgerMenu">
+                        <i class="bi bi-list"></i>
+                    </div>
+                    <h1>Profile Settings</h1>
+                    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+                    </div>
+                </div>
             </header>
 
             <?php if ($error): ?>
@@ -194,6 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
 
     <script src="js/main.js"></script>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>

@@ -38,7 +38,7 @@ foreach ($categoryData as $item) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>FinGrit - Analytics</title>
+    <title>FinGrit - Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -51,17 +51,33 @@ foreach ($categoryData as $item) {
 <body>
     <div class="dashboard-container">
         <?php include 'partials/sidebar.php'; ?>
-
-        <main class="dashboard-main">
+        <main class="dashboard-main" id="dashboardMain">
             <header class="dashboard-header">
-                <h1>Welcome back, <?php echo htmlspecialchars($user['name'] ?? 'Guest'); ?> .</h1>
-                <div class="header-actions">
+                <h1 class="header1">Welcome back, <?php echo htmlspecialchars($user['name'] ?? 'Guest'); ?> .</h1>
+                <div class="header-actions header-actions1">
                     <a href="transactions.php?action=add" class="btn btn-primary">
                         <i class="bi bi-plus"></i>
                         Add Transaction
                     </a>
                 </div>
+                <div class="topbar">
+                    <div class="top1">
+                    <div class="hamburger-menu" id="hamburgerMenu">
+                        <i class="bi bi-list"></i>
+                    </div>
+                    <h1>Welcome back, <?php echo htmlspecialchars($user['name'] ?? 'Guest'); ?> .</h1>
+                    <!-- Overlay for mobile -->
+                    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+                    </div>
+                    <div class="header-actions">
+                        <a href="transactions.php?action=add" class="btn btn-primary">
+                            <i class="bi bi-plus"></i>
+                            Add Transaction
+                        </a>
+                    </div>
+                </div>
             </header>
+
 
             <div class="dashboard-widgets">
                 <div class="widget income-widget">
@@ -129,6 +145,7 @@ foreach ($categoryData as $item) {
         </main>
     </div>
 
+    <script src="js/hamburger.js"></script>
     <script src="js/main.js"></script>
 
 </body>
