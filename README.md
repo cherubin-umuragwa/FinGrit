@@ -60,8 +60,8 @@ The project uses a small custom `.env` loader (`env-loader.php`) instead of `vlu
 
 ## 🌍 Live Demo & Video
 
-- 🔗 **Live Demo**: [Live Demo](coming soon)  
-- 🎥 **Video Walkthrough**: [YouTube Demo](coming soon)
+- 🔗 **Live Demo**: [Live Demo](https://fingrit.free.nf/)  
+- 🎥 **Video Walkthrough**: [YouTube Demo](https://youtu.be/SfFS-omNevo?si=0Au4MH4u3aGnw5rI)
 
 ---
 

@@ -183,7 +183,7 @@ require_once 'php/auth.php';
                         </div>
                         <div class="align-self-start"><a
                             class="glightbox btn btn-play d-inline-flex align-items-center gap-2"
-                            href="#" data-gallery="video"><i
+                            href="https://youtu.be/SfFS-omNevo?si=0Au4MH4u3aGnw5rI" data-gallery="video"><i
                               class="bi bi-play-fill"></i> Demo Video</a></div>
                       </div>
                     </div>

@@ -290,8 +290,7 @@ textarea:focus {
 
 .widget,
 .recent-,
-.transactions-container,
-.goals-container {
+.transactions-container {
   border-radius: 15px;
   background: var(--form-bg);
   box-shadow: 8px 8px 16px var(--shadow-dark),
@@ -301,8 +300,7 @@ textarea:focus {
   overflow: hidden;
 }
 
-.transactions-container,
-.goals-container {
+.empty-state{
   display: flex;
   justify-content: center;
   max-width: 500px;

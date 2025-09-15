@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Coming soon. Send email with reset link
         $resetLink = getenv('APP_URL') . "/reset-password.php?token=$token";
 
-        // Coming soon. For demo purposes, you will just see a link
+        // Coming soon. For demo purposes, I just set the success message to a link
         $success = "Password reset link: <a href='$resetLink'>$resetLink</a>";
     } catch (Exception $e) {
         $error = $e->getMessage();
